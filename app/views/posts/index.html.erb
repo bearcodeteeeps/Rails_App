@@ -1,0 +1,57 @@
+<div class="test">
+   <%= form_for @post, url: posts_path(page: @page)  do |f| %>
+    <p>
+      <%= f.label :text %><br>
+      <%= f.text_field :text %>
+    </p> 
+    <p>
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
+    </p>
+     
+     </p>
+    <p>
+      <%= f.submit 'submit',id: 'submit_post'%>
+    </p>
+  <% end %>
+
+  <h1 align="center">Listing Post</h1></br>
+
+  <div id="page_paginate">
+   
+    <%= render partial: 'posts/posts' %>
+     
+  </div>
+</div>
+<script>
+  $(function() {
+    $("#submit_post").on("click", function(event) {
+      event.preventDefault();
+      var formdata = new FormData($('form')[0]);
+      // var valuesToSubmit = $('form').serialize();
+       
+       
+        
+
+      
+
+
+      // alert(valuesToSubmit)
+      $.ajax({
+        type: "post",
+        url: "/posts",
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+          alert("Data: " + data );
+          // alert('Successfully called');
+          // debugger
+          $(".post_list").prepend(data.text);
+        },
+        
+      });
+    });
+  });
+</script>
+

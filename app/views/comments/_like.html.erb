@@ -1,0 +1,6 @@
+
+<% text = comment.likes.where(likeable_id:comment.id).last.present? ? 'unlike' : 'like' %>
+
+<div class="comment_likes" id="likes_for_comment_<%= comment.id %>">
+	<%= link_to "#{text}", comment_likes_path(comment), :remote => true %>
+</div>

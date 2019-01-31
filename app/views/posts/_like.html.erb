@@ -1,0 +1,4 @@
+<% text = post.likes.where(likeable_id: post.id).last.present? ? 'unlike' : 'like' %>
+<div class="post_likes" id="likes_for_post_<%= post.id %>">
+	<%= link_to "#{text}", post_likes_path(post), :remote => true %>
+</div>

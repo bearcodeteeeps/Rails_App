@@ -1,0 +1,6 @@
+<div class="comment">
+	<%= comment.text %> 
+	<div id="comments_likes <%= comment.id %>">
+	<%=  render partial: 'comments/like', locals: {comment: comment} %>
+  </div>
+</div>

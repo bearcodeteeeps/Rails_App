@@ -1,0 +1,26 @@
+<div class="post">
+
+  <p class="post_text_hide"><%=post.text %></p>
+  <div id="likes_for_post_<%= post.id %>">
+    <%=  render partial: 'posts/like', locals: {post: post} %>   
+  </div>
+  <button><b>Comments:</b></button> 
+
+  <div class="comments" id="comments_for_post_<%= post.id %>">
+    <% post.comments.each do | comment| %>
+
+      <%= render partial: 'comments/comment', locals: {comment: comment,post:post} %>
+    <% end %>
+    <!-- New comment will come here -->
+  </div>
+
+  <div class="comments_hide">
+    <%= form_for Comment.new ,remote: true do |f| %>
+      <%= f.hidden_field :post_id,:value => post.id %>
+      <p>
+        <%= f.text_field :text %>
+        <%= f.submit 'submit', :class => 'btw' %>
+      </p>
+    <% end %>
+  </div>
+</div><br>
