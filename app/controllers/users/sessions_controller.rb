@@ -2,11 +2,6 @@
 
 class Users::SessionsController < Devise::SessionsController
 
-   
-  end
-
-
-
   # GET /resource/sign_in
    
   # POST /resource/sign_in
