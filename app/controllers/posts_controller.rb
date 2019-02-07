@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   end
   
 	def create
-   
+    
     @post = current_user.posts.create(post_params) 
     @posts=Post.all.paginate(:page =>  params[:page], :per_page => 3)
 

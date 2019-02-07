@@ -289,5 +289,7 @@ Devise.setup do |config|
   # end
   config.scoped_views = true
   # config.authentication_keys = [ :login ]
-
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], scope: 'email'
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {name: 'google' }
+  config.omniauth :linkedin, "81k3lbxnf23go3", "8vqPoYsm38ZfwKXB"
 end

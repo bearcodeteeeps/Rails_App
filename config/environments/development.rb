@@ -64,14 +64,29 @@ Rails.application.configure do
  # config.action_mailer.default_options = {from: 'richayuvasoft251@gmail.com'}
 
   config.action_mailer.smtp_settings = {
-  :enable_starttls_auto => true,  #this is the important shit!
-  :address => "smtp.gmail.com", 
-  :port => "587",
-  :authentication => "plain",
+    :enable_starttls_auto => true,  #this is the important shit!
+    :address => "smtp.gmail.com", 
+    :port => "587",
+    :authentication => "plain",
 
-  :user_name => 'richayuvasoft251@gmail.com',
-  :password => 'ricms@123'
-} 
+    :user_name => 'richayuvasoft251@gmail.com',
+    :password => 'ricms@123'
+  } 
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      login: "richayuvasoft_api1.gmail.com",
+      password: "R6LVM6ARAW2LTDZN",
+      signature: "AdkuYn3XEjHH-3KOoQu2LfjEXTYbAFvAtHhDFXxLf1WGJHSKmIO8sABm"
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
+  Rails.configuration.stripe = {
+    :publishable_key => ENV['STRIPE_PUBLISHABLE_KEY'],
+    :secret_key      => ENV['STRIPE_SECRET_KEY']
+  }
+
+  Stripe.api_key = Rails.configuration.stripe[:secret_key]
 end
 
 

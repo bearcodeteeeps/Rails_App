@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_29_111123) do
+ActiveRecord::Schema.define(version: 2019_02_07_075951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentications", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
@@ -30,6 +38,20 @@ ActiveRecord::Schema.define(version: 2019_01_29_111123) do
     t.datetime "updated_at", null: false
     t.bigint "comment_id"
     t.index ["likeable_id"], name: "index_likes_on_likeable_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "ip_address"
+    t.string "string"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "card_type"
+    t.string "card_expires_on"
+    t.string "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "total_amount_cents"
+    t.string "express_token"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -57,6 +79,12 @@ ActiveRecord::Schema.define(version: 2019_01_29_111123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.string "provider"
+    t.string "uid"
+    t.string "authy_id"
+    t.datetime "last_sign_in_with_authy"
+    t.boolean "authy_enabled", default: false
+    t.index ["authy_id"], name: "index_users_on_authy_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
