@@ -80,5 +80,5 @@ gem 'omniauth-linkedin'
 gem 'pry', '~> 0.10.3'
 gem 'activemerchant', '~> 1.60'
 gem 'stripe'
-
+gem 'geocoder'
 gem 'twilio-ruby', '~> 5.20.0'

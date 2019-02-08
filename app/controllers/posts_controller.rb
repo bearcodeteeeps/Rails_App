@@ -33,11 +33,7 @@ class PostsController < ApplicationController
     
     @post = current_user.posts.create(post_params) 
     @posts=Post.all.paginate(:page =>  params[:page], :per_page => 3)
-
-    respond_to do |format|
-      format.json { render json: @post } 
-      format.html  
-    end
+    
   end
 
 

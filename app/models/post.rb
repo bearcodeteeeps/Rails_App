@@ -9,7 +9,8 @@ class Post < ApplicationRecord
   # scope :ordered, -> { order('created_at ASC') }
   
   def self.list_by
-    order("created_at ASC")
+    order("text ASC")
+    
   
   end
   

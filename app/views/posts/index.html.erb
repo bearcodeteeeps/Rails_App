@@ -1,5 +1,5 @@
 <div class="test">
-   <%= form_for @post, url: posts_path(page: @page)  do |f| %>
+   <%= form_for @post, url: posts_path(page: @page),remote: true do |f| %>
     <p>
       <%= f.label :text %><br>
       <%= f.text_field :text %>
@@ -31,7 +31,7 @@
 </div>
 
 
-<script>
+<!-- <script>
   $(function() {
     $("#submit_post").on("click", function(event) {
       event.preventDefault();
@@ -57,3 +57,4 @@
   });
 </script>
 
+ -->
