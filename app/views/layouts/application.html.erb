@@ -10,59 +10,6 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Devise Test</a>
-        </div>
-        <ul class="nav navbar-nav navbar-left">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile" %></li>
-              <li><%= link_to "Settings", '#' %></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href = "#"  id="myLink"> <span class="glyphicon glyphicon-option-vertical"></span>Payments with Paypal</a></li>
-          
-
-
-
-
-
-          
-          <li><a href = "<%= user_google_oauth2_omniauth_authorize_path %>"  id="myLink"> <span class="glyphicon glyphicon-user"></span>Sign Up with Gmail</a></li>
-          <li><a href = "<%= user_facebook_omniauth_authorize_path %>"  id="myLink"> <span class="glyphicon glyphicon-user"></span>Sign Up with Facebook</a></li>
-          <li><a href = "<%= edit_user_registration_path %> "> <span class="glyphicon glyphicon-pencil"></span>Edit profile </a></li>
-          <li><a href = "<%= posts_path %> " id="myLink"> <span class="glyphicon glyphicon-pencil"></span>Add Post </a></li>
-
-
-          <li><a href = "<%= destroy_user_session_path %>" data-method="delete" > <span class="glyphicon glyphicon-off"></span> Logout</a></li>
-        </ul>
-      </div>
-    </nav> 
-    Logged in as <strong><%= current_user.email %></strong>.
-    <div class="container">
-      <% else %>
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Devise Test</a>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href = "<%= new_user_registration_path %>"> <span class="glyphicon glyphicon-user"></span>Sign up </a></li>
-            <li><a href = "<%= new_user_session_path %>" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
-        </div>
-      </nav> 
-      <% end %>
-     
-        <%= yield %>
-        <%= render 'layouts/footer' %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </body>
-      </html>
+    <%= yield %>
+  </body>
+</html>
